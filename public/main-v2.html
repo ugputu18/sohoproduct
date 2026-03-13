@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SOHO.LMS — платформа для управления обучением</title>
+<style>
+:root{
+--bg:#f5f6f4;--surface:#ffffff;--surface-2:#f0f3ef;--text:#171717;--muted:#66706a;--line:#dce5dd;--brand:#7ec293;--brand-dark:#5ea777;--accent:#eaf6ee;--shadow:0 12px 40px rgba(17,24,39,.08);--radius:22px;--container:1200px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--text);line-height:1.5}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+h1{font-size:clamp(42px,5vw,72px);margin:0 0 14px;letter-spacing:-.03em}
+h2{font-size:clamp(30px,4vw,48px);margin:0 0 14px}
+h3{margin:0 0 8px}
+p{margin:0;color:var(--muted)}
+.section{padding:70px 0}
+.eyebrow{display:inline-block;padding:8px 12px;border-radius:999px;background:var(--accent);color:var(--brand-dark);font-weight:700;font-size:14px;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border-radius:14px;font-weight:700;border:1px solid transparent;text-decoration:none}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-secondary{background:#fff;border-color:var(--line)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.point{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.hero-cta{display:flex;gap:12px;margin-top:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:24px}
+.placeholder{border:2px dashed #cfe2d6;border-radius:16px;height:260px;display:flex;align-items:center;justify-content:center;text-align:center;color:#6a8c76;background:repeating-linear-gradient(45deg,#f5faf6,#f5faf6 18px,#edf6ef 18px,#edf6ef 36px)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.case{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px}
+.cta{background:#fff;border:1px solid var(--line);border-radius:26px;padding:40px;text-align:center;box-shadow:var(--shadow)}
+footer{padding:40px 0;color:var(--muted);font-size:14px}
+@media (max-width:1000px){.hero,.compare{grid-template-columns:1fr}.grid3,.grid4,.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.grid3,.grid4,.steps{grid-template-columns:1fr}.hero-points{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<section class="section">
+<div class="container hero">
+<div>
+<div class="eyebrow">Единая платформа для образовательных проектов</div>
+<h1>Управляйте обучением, учениками и оплатами в одной системе</h1>
+<p>SOHO.LMS помогает онлайн‑школам и образовательным проектам проводить занятия, выдавать задания, управлять расписанием и принимать оплаты без набора разрозненных сервисов.</p>
+
+<div class="hero-points">
+<div class="point">Занятия, курсы и программы обучения</div>
+<div class="point">Домашние задания и тестирование</div>
+<div class="point">CRM учеников и управление группами</div>
+<div class="point">Продажи курсов и автоматизация оплат</div>
+</div>
+
+<div class="hero-cta">
+<a class="btn btn-primary" href="#" title="Запросить демонстрацию платформы">Получить демо</a>
+<a class="btn btn-secondary" href="#" title="Попробовать платформу бесплатно">Попробовать бесплатно</a>
+</div>
+</div>
+
+<div class="card" title="Основной интерфейс платформы">
+<div class="placeholder">Скрин основного интерфейса платформы</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="eyebrow">Для разных форматов обучения</div>
+<h2>Платформа адаптируется под формат вашей школы</h2>
+
+<div class="grid3">
+<div class="card" title="Детские школы и образовательные центры">
+<h3>Детское образование</h3>
+<p>Расписание занятий, группы учеников, домашние задания и контроль прогресса обучения.</p>
+</div>
+
+<div class="card" title="Онлайн‑курсы и образовательные программы">
+<h3>Обучение взрослых</h3>
+<p>Курсы, вебинары, лендинги, заявки и продажи образовательных программ.</p>
+</div>
+
+<div class="card" title="Внутренние академии компаний">
+<h3>Корпоративное обучение</h3>
+<p>Программы обучения сотрудников, тестирование и контроль прохождения курсов.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container compare">
+<div>
+<div class="eyebrow">Проблема</div>
+<h2>Многие школы используют десятки сервисов одновременно</h2>
+
+<div class="card" style="margin-top:20px">
+<p>Zoom для занятий</p>
+<p>Telegram для общения</p>
+<p>Google Docs для материалов</p>
+<p>Таблицы для учёта учеников</p>
+</div>
+</div>
+
+<div>
+<div class="eyebrow">Решение</div>
+<h2>SOHO.LMS объединяет обучение и управление школой</h2>
+
+<div class="card" title="Единая система управления обучением" style="margin-top:20px">
+<div class="placeholder">Схема единой платформы</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="eyebrow">Возможности платформы</div>
+<h2>Всё необходимое для управления обучением</h2>
+<p style="max-width:820px">Слайдер остаётся главным продуктовым блоком. Но теперь каждый слайд показывает не просто раздел платформы, а понятную пользу для школы.</p>
+
+<div class="card" style="margin-top:28px;padding:0;overflow:hidden" title="Слайдер с ключевыми сценариями платформы">
+  <div style="display:flex;gap:18px;flex-wrap:wrap;padding:24px 24px 18px;border-bottom:1px solid var(--line);font-weight:700;color:var(--brand-dark)">
+    <div style="padding-bottom:6px;border-bottom:3px solid var(--brand)">Управляйте обучением</div>
+    <div style="padding-bottom:6px">Проводите занятия</div>
+    <div style="padding-bottom:6px">Создавайте сайты</div>
+    <div style="padding-bottom:6px">Общайтесь с учениками</div>
+    <div style="padding-bottom:6px">Принимайте оплаты</div>
+    <div style="padding-bottom:6px">Автоматизируйте школу</div>
+  </div>
+
+  <div style="padding:28px 24px 34px;display:grid;gap:40px">
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 1 — управление обучением">
+      <div>
+        <h3>Соберите обучение в одной системе</h3>
+        <p>Курсы, группы, расписание, задания и журнал работают вместе — без таблиц, чатов и ручного контроля.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Курсы, подписки, вебинары и абонементы</li>
+          <li>Учебные группы как в школе и ВУЗе</li>
+          <li>Интерактивные тесты и банк заданий</li>
+          <li>Загрузка видео, аудио, формул и SCORM</li>
+          <li>Электронный журнал и защита контента</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: учебный модуль">Слайд 1 — текущий экран «Учебный модуль»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 2 — видеозанятия и вебинары">
+      <div>
+        <h3>Проводите занятия и вебинары внутри платформы</h3>
+        <p>Ученик видит расписание, заходит на урок и возвращается к записи в том же учебном контуре.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Видеозвонки и конференции</li>
+          <li>Вебинары до 10 тысяч участников</li>
+          <li>Календарь занятий и автозапись видео</li>
+          <li>Автовебинары и встроенная белая доска</li>
+          <li>Поддержка внешних видеоисточников</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: видеосвязь">Слайд 2 — текущий экран «Видеосвязь»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 3 — сайт и продажи">
+      <div>
+        <h3>Запускайте сайт и продажи без отдельного конструктора</h3>
+        <p>Школа может быстро собрать страницу программы, оформить преподавателей и запустить продажи прямо на платформе.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Готовые шаблоны лендингов для быстрого старта</li>
+          <li>Кастомизация дизайна</li>
+          <li>Виджеты для продажи</li>
+          <li>Базовая аналитика</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: конструктор сайтов">Слайд 3 — текущий экран «Конструктор сайтов»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 4 — коммуникации">
+      <div>
+        <h3>Общайтесь с учениками там, где идёт обучение</h3>
+        <p>Переписка, уведомления, чат-боты и рассылки становятся частью учебного процесса, а не живут отдельно от него.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Вся переписка в одном чате</li>
+          <li>Почта, WhatsApp, Telegram, соцсети</li>
+          <li>Конференции с записью звонков</li>
+          <li>Рассылки по любым событиям</li>
+          <li>Конструктор ботов и автоворонки</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: коммуникации">Слайд 4 — текущий экран «Коммуникации»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 5 — оплаты и рассрочки">
+      <div>
+        <h3>Принимайте оплаты и открывайте доступ автоматически</h3>
+        <p>Оплаты, рассрочки и подписки работают как часть образовательного продукта, а не как отдельная ручная операция.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Платёжные сервисы для разных моделей обучения</li>
+          <li>Мультивалютность и предоплаты</li>
+          <li>Рассрочки и автосписания по подписке</li>
+          <li>Настраиваемый график платежей</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: оплаты и рассрочки">Слайд 5 — текущий экран «Оплаты и рассрочки»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center" title="Слайд 6 — CRM и автоматизация">
+      <div>
+        <h3>Автоматизируйте процессы школы по мере роста</h3>
+        <p>Когда школа растёт, платформа помогает управлять клиентами, задачами, аналитикой и повторяющимися операциями в одном месте.</p>
+        <ul style="margin:18px 0 0;padding-left:22px;color:var(--text)">
+          <li>Автоматизация задач и процессов</li>
+          <li>Гибкие фильтры и массовые действия</li>
+          <li>Расчёт зарплат преподавателей</li>
+          <li>Акции, промокоды и сквозная аналитика</li>
+          <li>Импорт клиентов и интеграции по API</li>
+        </ul>
+      </div>
+      <div class="placeholder" style="height:360px" title="Заменить на текущий слайд: CRM">Слайд 6 — текущий экран «CRM»</div>
+    </div>
+
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="eyebrow">Как проходит обучение</div>
+<h2>Весь цикл обучения в одной системе</h2>
+
+<div class="steps">
+<div class="step" title="Регистрация ученика">Ученик записывается на курс</div>
+<div class="step" title="Оплата курса">Оплачивает обучение</div>
+<div class="step" title="Прохождение обучения">Посещает занятия и выполняет задания</div>
+<div class="step" title="Результат обучения">Получает результат и обратную связь</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="eyebrow">Кейсы</div>
+<h2>Школы разных форматов используют SOHO.LMS</h2>
+
+<div class="case" title="Школа подготовки к экзаменам">
+<h3>Подготовка к экзаменам</h3>
+<p>Регулярные группы, домашние задания и контроль прогресса учеников.</p>
+</div>
+
+<div class="case" title="Онлайн‑курсы">
+<h3>Онлайн‑курсы</h3>
+<p>Продажа программ обучения, вебинары и автоматическая выдача доступа.</p>
+</div>
+
+<div class="case" title="Корпоративное обучение">
+<h3>Корпоративные программы</h3>
+<p>Внутренние курсы и обучение сотрудников компаний.</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="cta">
+<h2>Посмотрите, как SOHO.LMS работает на практике</h2>
+<p style="margin:10px 0 24px">Покажем возможности платформы и подберём сценарий под ваш формат обучения.</p>
+
+<a class="btn btn-primary" href="#" title="Записаться на демонстрацию">Получить демо</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+SOHO.LMS — платформа для управления обучением
+</div>
+</footer>
+
+</body>
+</html>
