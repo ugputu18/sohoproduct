@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOHO.LMS — черновой мокап главной</title>
+  <style>
+    :root {
+      --bg: #f5f6f4;
+      --surface: #ffffff;
+      --surface-2: #f0f3ef;
+      --text: #131313;
+      --muted: #66706a;
+      --line: #dce5dd;
+      --brand: #7ec293;
+      --brand-dark: #5ea777;
+      --accent: #eaf6ee;
+      --shadow: 0 12px 40px rgba(17, 24, 39, 0.08);
+      --radius: 22px;
+      --container: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, Arial, sans-serif; }
+    body { line-height: 1.45; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(var(--container), calc(100vw - 48px)); margin: 0 auto; }
+    .section { padding: 40px 0; }
+    .section-lg { padding: 72px 0; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: var(--accent); color: var(--brand-dark); font-weight: 600; font-size: 14px; }
+    .h1 { font-size: clamp(40px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 18px; font-weight: 800; }
+    .h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.06; letter-spacing: -0.025em; margin: 0 0 14px; font-weight: 800; }
+    .h3 { font-size: 24px; line-height: 1.15; margin: 0 0 10px; font-weight: 750; }
+    .lead { font-size: 20px; color: var(--muted); max-width: 780px; }
+    .muted { color: var(--muted); }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: rgba(245,246,244,0.88); border-bottom: 1px solid rgba(220,229,221,0.8);
+    }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 24px; }
+    .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+    .nav { display: flex; gap: 22px; color: var(--muted); font-size: 15px; }
+    .actions { display: flex; gap: 12px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 14px; padding: 15px 20px; font-size: 16px; font-weight: 700;
+      border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+    }
+    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 10px 20px rgba(126,194,147,0.25); }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-secondary { background: var(--surface); border-color: var(--line); }
+    .btn-ghost { background: transparent; border-color: var(--line); }
+
+    .hero {
+      display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 36px; align-items: center;
+      padding: 34px 0 24px;
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+      border: 1px solid rgba(220,229,221,0.9); border-radius: 30px; box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .hero-points { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 16px; margin: 24px 0 28px; }
+    .point { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
+    .point .dot { width: 24px; height: 24px; border-radius: 999px; background: var(--accent); color: var(--brand-dark); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; flex: 0 0 auto; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .logos-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip { padding: 9px 12px; border-radius: 999px; background: var(--surface-2); color: var(--muted); font-size: 14px; border: 1px solid var(--line); }
+
+    .stage {
+      position: relative; min-height: 580px; border-radius: 30px; overflow: hidden;
+      background: linear-gradient(135deg, #eef7f1 0%, #f8f8f6 42%, #eef1ff 100%);
+      border: 1px solid rgba(220,229,221,0.9); box-shadow: var(--shadow); padding: 26px;
+    }
+    .badge-note {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,0.8); border: 1px solid rgba(220,229,221,0.8); font-size: 13px; color: var(--muted);
+    }
+    .screen {
+      position: absolute; background: #fff; border: 1px solid #dbe3dd; border-radius: 22px; box-shadow: 0 20px 50px rgba(22, 27, 45, 0.14);
+      overflow: hidden;
+    }
+    .screen-header { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #f6f8f6; border-bottom: 1px solid #e7ece7; }
+    .screen-header span { width: 10px; height: 10px; border-radius: 999px; background: #d8e2d8; }
+    .screen-content { padding: 16px; height: calc(100% - 42px); }
+    .desktop { width: 78%; height: 66%; right: 7%; top: 18%; }
+    .mobile { width: 28%; height: 55%; right: 0; bottom: 4%; border-radius: 28px; }
+    .placeholder {
+      width: 100%; height: 100%; border: 2px dashed #bfd7c5; border-radius: 18px; background: repeating-linear-gradient(45deg, #f5faf6, #f5faf6 18px, #edf6ef 18px, #edf6ef 36px);
+      display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; color: #587264; font-weight: 650;
+    }
+    .sticky-label {
+      position: absolute; top: 22px; right: 22px; max-width: 260px; background: rgba(255,255,255,0.88); backdrop-filter: blur(10px);
+      border: 1px solid rgba(220,229,221,0.92); border-radius: 18px; padding: 14px 16px; box-shadow: var(--shadow); font-size: 14px;
+    }
+
+    .segments { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 28px; }
+    .segment {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: var(--shadow);
+    }
+    .segment ul { padding: 0; margin: 14px 0 0; list-style: none; display: grid; gap: 10px; color: var(--muted); }
+    .segment li::before { content: '✓'; color: var(--brand-dark); margin-right: 10px; font-weight: 800; }
+    .segment .mini { color: var(--muted); margin-bottom: 14px; }
+
+    .slider-shell {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); overflow: hidden;
+    }
+    .slider-head { padding: 28px 28px 18px; border-bottom: 1px solid var(--line); }
+    .tabs { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .tab { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: var(--surface-2); font-weight: 650; }
+    .tab.active { background: var(--accent); color: var(--brand-dark); border-color: #cae6d2; }
+
+    .slide {
+      display: grid; grid-template-columns: 0.94fr 1.06fr; gap: 30px; align-items: center; padding: 28px;
+    }
+    .slide-copy { padding-right: 8px; }
+    .slide-copy ul { list-style: none; padding: 0; margin: 18px 0 24px; display: grid; gap: 13px; }
+    .slide-copy li { font-size: 20px; }
+    .slide-copy li::before { content: '✓'; color: var(--brand); margin-right: 12px; font-weight: 800; }
+    .slide-visual { position: relative; min-height: 520px; background: linear-gradient(135deg, #f8faf8, #edf7f0); border: 1px solid var(--line); border-radius: 26px; overflow: hidden; }
+    .slide-visual .desktop { top: 12%; right: 8%; height: 68%; width: 78%; }
+    .slide-visual .mobile { height: 54%; width: 28%; bottom: 5%; right: 0; }
+    .visual-note { position: absolute; left: 20px; bottom: 20px; width: 240px; background: rgba(255,255,255,0.92); border: 1px solid var(--line); border-radius: 18px; padding: 14px; font-size: 14px; color: var(--muted); }
+
+    .benefits { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 14px; margin-top: 28px; }
+    .benefit { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+    .benefit strong { display: block; margin-bottom: 8px; font-size: 18px; }
+
+    .showcase { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 24px; align-items: stretch; }
+    .case-grid, .steps, .testimonials { display: grid; gap: 16px; }
+    .case-card, .step-card, .quote, .app-card, .cta-box {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: var(--shadow);
+    }
+    .case-card small, .quote small { color: var(--brand-dark); font-weight: 700; }
+    .case-card p, .quote p { color: var(--muted); }
+
+    .steps { grid-template-columns: repeat(4, minmax(0,1fr)); margin-top: 26px; }
+    .step-number {
+      width: 40px; height: 40px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--accent); color: var(--brand-dark); font-weight: 800; margin-bottom: 12px;
+    }
+
+    .split { display: grid; grid-template-columns: 0.98fr 1.02fr; gap: 24px; align-items: center; }
+    .phone-app {
+      position: relative; min-height: 430px; background: linear-gradient(135deg, #f8faf8, #edf7f0); border: 1px solid var(--line); border-radius: 28px; overflow: hidden;
+    }
+    .phone-app .mobile { width: 38%; height: 78%; right: 12%; bottom: 8%; }
+    .phone-app .desktop { width: 52%; height: 52%; left: 6%; top: 12%; }
+
+    .footer { padding: 22px 0 60px; color: var(--muted); }
+    .footer-line { border-top: 1px solid var(--line); padding-top: 20px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 1100px) {
+      .hero, .slide, .showcase, .split { grid-template-columns: 1fr; }
+      .segments, .benefits, .steps { grid-template-columns: 1fr 1fr; }
+      .stage, .slide-visual { min-height: 460px; }
+      .nav { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(var(--container), calc(100vw - 24px)); }
+      .topbar-inner { padding: 14px 0; }
+      .actions { display: none; }
+      .hero-points, .segments, .benefits, .steps { grid-template-columns: 1fr; }
+      .slide-copy li { font-size: 18px; }
+      .stage, .slide-visual, .phone-app { min-height: 390px; }
+      .desktop { width: 86%; right: 7%; }
+      .mobile { width: 34%; }
+      .sticky-label { position: static; max-width: none; margin-top: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo">SOHO.LMS</div>
+      <div class="nav">
+        <a href="#segments">Решения</a>
+        <a href="#slider">Возможности</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#launch">Запуск</a>
+        <a href="#app">Приложение</a>
+      </div>
+      <div class="actions">
+        <a class="btn btn-secondary" href="#slider">Смотреть возможности</a>
+        <a class="btn btn-primary" href="#cta">Попробовать бесплатно</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="section-lg">
+      <div class="container hero">
+        <div>
+          <div class="eyebrow">Единая платформа для запуска и управления обучением</div>
+          <h1 class="h1">Помогает продавать, проводить и масштабировать обучение</h1>
+          <div class="lead">
+            Курсы, вебинары, расписание, CRM, оплаты, коммуникации и мобильное приложение — в одной системе для детского, взрослого и корпоративного обучения.
+          </div>
+          <div class="hero-points">
+            <div class="point"><span class="dot">✓</span><span>Быстрый старт без зоопарка сервисов</span></div>
+            <div class="point"><span class="dot">✓</span><span>Понятный кабинет для учеников и команды</span></div>
+            <div class="point"><span class="dot">✓</span><span>Продажи, обучение и аналитика в одном месте</span></div>
+            <div class="point"><span class="dot">✓</span><span>Подходит школам, экспертам и компаниям</span></div>
+          </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#cta">Попробовать бесплатно</a>
+            <a class="btn btn-secondary" href="#launch">Посмотреть демо</a>
+          </div>
+          <div class="muted">Используют онлайн-школы, учебные центры, эксперты и корпоративные академии</div>
+          <div class="logos-row">
+            <span class="chip">Детское образование</span>
+            <span class="chip">Онлайн-школы для взрослых</span>
+            <span class="chip">Корпоративное обучение</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="badge-note">Сохраняем идею текущего верхнего визуала, но меняем акцент с функций на результат</div>
+          <div class="stage" style="margin-top:14px;">
+            <div class="sticky-label">
+              <strong>Идея верхнего экрана</strong><br />
+              Слайдер и продуктовые скриншоты остаются, но тексты рядом говорят не о модулях, а о том, что школа получает: запуск продаж, проведение занятий, контроль обучения, автоматизация.
+            </div>
+            <div class="screen desktop">
+              <div class="screen-header"><span></span><span></span><span></span></div>
+              <div class="screen-content">
+                <div class="placeholder">Сюда положить текущий десктопный скрин из верхнего слайдера<br /><br />Например: программа / CRM / вебинар / сайт</div>
+              </div>
+            </div>
+            <div class="screen mobile">
+              <div class="screen-header"><span></span><span></span><span></span></div>
+              <div class="screen-content">
+                <div class="placeholder">Сюда положить мобильный скрин из текущего слайдера</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="segments">
+      <div class="container">
+        <div class="eyebrow">Три сильных направления на одной платформе</div>
+        <h2 class="h2">Пользователь сразу узнаёт свой формат обучения</h2>
+        <div class="lead">Вместо универсального сообщения сверху мы быстро показываем, что SOHO.LMS одинаково уверенно решает три разные задачи.</div>
+
+        <div class="segments">
+          <div class="segment">
+            <h3 class="h3">Детское образование</h3>
+            <div class="mini">Онлайн-школы, репетиторские центры, подготовка к экзаменам, кружки и регулярные группы.</div>
+            <ul>
+              <li>Учебные группы и расписание как в школе</li>
+              <li>Домашние задания, тесты и журнал</li>
+              <li>Родительский доступ и контроль прогресса</li>
+              <li>Мобильное приложение для учеников</li>
+            </ul>
+          </div>
+          <div class="segment">
+            <h3 class="h3">Образование для взрослых</h3>
+            <div class="mini">Онлайн-курсы, школы экспертов, вебинары, подписки и продукты с продажей через сайт.</div>
+            <ul>
+              <li>Курсы, вебинары, лендинги и оплаты</li>
+              <li>CRM, автоворонки и коммуникации</li>
+              <li>Подписки, рассрочки и повторные продажи</li>
+              <li>Сквозная аналитика по заявкам и выручке</li>
+            </ul>
+          </div>
+          <div class="segment">
+            <h3 class="h3">Корпоративное обучение</h3>
+            <div class="mini">Онбординг, аттестация, регулярное обучение сотрудников и контроль прохождения.</div>
+            <ul>
+              <li>Курсы и тестирование сотрудников</li>
+              <li>Отчёты, роли и доступы по отделам</li>
+              <li>Быстрый запуск обучающих программ</li>
+              <li>Единое пространство для материалов и аналитики</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-lg" id="slider">
+      <div class="container slider-shell">
+        <div class="slider-head">
+          <div class="eyebrow">Ключевая идея верхнего слайдера сохраняется</div>
+          <h2 class="h2">Но теперь он показывает не разделы платформы, а пользу для школы</h2>
+          <div class="lead">Ниже — черновик одного слайда. Остальные собираются в той же логике: задача, результат, подтверждение скриншотом.</div>
+          <div class="tabs">
+            <div class="tab">Управляйте обучением</div>
+            <div class="tab">Проводите занятия</div>
+            <div class="tab active">Продавайте обучение</div>
+            <div class="tab">Общайтесь со студентами</div>
+            <div class="tab">Автоматизируйте школу</div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-copy">
+            <div class="eyebrow">Пример слайда</div>
+            <h3 class="h2" style="font-size: clamp(30px, 4vw, 54px); margin-top: 14px;">Продавайте обучение прямо на платформе</h3>
+            <div class="lead" style="font-size: 19px; max-width: 560px;">
+              Это уже не просто экран про «оплаты и рассрочки», а понятный для клиента результат: можно запускать продажи без отдельного конструктора, CRM и платёжной обвязки.
+            </div>
+            <ul>
+              <li>Принимайте оплаты за курсы, подписки и программы</li>
+              <li>Используйте рассрочки и гибкие графики платежей</li>
+              <li>Работайте с заявками, заказами и повторными продажами</li>
+              <li>Видьте выручку, конверсии и источники клиентов в одной системе</li>
+            </ul>
+            <a class="btn btn-primary" href="#cta">Попробовать бесплатно</a>
+          </div>
+
+          <div class="slide-visual">
+            <div class="screen desktop">
+              <div class="screen-header"><span></span><span></span><span></span></div>
+              <div class="screen-content">
+                <div class="placeholder">Сюда положить текущий десктопный скрин с оплатами / аналитикой / заказами</div>
+              </div>
+            </div>
+            <div class="screen mobile">
+              <div class="screen-header"><span></span><span></span><span></span></div>
+              <div class="screen-content">
+                <div class="placeholder">Сюда положить мобильный экран оплаты</div>
+              </div>
+            </div>
+            <div class="visual-note">
+              <strong>Подход к слайдам:</strong><br />
+              заголовок = результат,<br />
+              bullets = короткие выгоды,<br />
+              скрин = подтверждение, что это реально в продукте.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <div class="eyebrow">Почему это должно конвертить лучше</div>
+        <h2 class="h2">Главная становится не каталогом функций, а маршрутом к покупке</h2>
+        <div class="benefits">
+          <div class="benefit"><strong>Сразу понятно, для кого платформа</strong><span class="muted">Три сегмента вынесены выше и не теряются внизу страницы.</span></div>
+          <div class="benefit"><strong>Верхний экран стал понятнее</strong><span class="muted">Пользователь видит задачу и результат, а не только список модулей.</span></div>
+          <div class="benefit"><strong>Слайдер начинает продавать</strong><span class="muted">Он по-прежнему демонстрирует продукт, но через выгоды.</span></div>
+          <div class="benefit"><strong>Путь до демо короче</strong><span class="muted">После понимания ценности сразу идёт сегментация и кейсы.</span></div>
+          <div class="benefit"><strong>Сильнее работает на весь трафик</strong><span class="muted">Одна страница обслуживает детское, взрослое и корпоративное направление.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-lg" id="cases">
+      <div class="container showcase">
+        <div>
+          <div class="eyebrow">Доверие и узнавание</div>
+          <h2 class="h2">Кейсы лучше подавать ближе к сегментам</h2>
+          <div class="case-grid">
+            <div class="case-card">
+              <small>Детское образование</small>
+              <h3 class="h3">Онлайн-школы и подготовка к экзаменам</h3>
+              <p>Здесь показываются 2–3 примера школ, где важны группы, регулярные занятия, домашки, родительский доступ и журнал.</p>
+            </div>
+            <div class="case-card">
+              <small>Образование для взрослых</small>
+              <h3 class="h3">Эксперты, курсы и вебинарные продукты</h3>
+              <p>Акцент на продажах, подписках, автоворонках, вебинарах и повторных покупках внутри одной системы.</p>
+            </div>
+            <div class="case-card">
+              <small>Корпоративное обучение</small>
+              <h3 class="h3">Обучение сотрудников и аттестация</h3>
+              <p>Показываем сценарии онбординга, прохождения программ, тестирования и контроля результатов по командам.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card" style="padding: 26px;">
+          <div class="eyebrow">Место для визуала</div>
+          <h3 class="h3" style="margin-top:14px;">Можно использовать существующие карточки клиентов и логотипы</h3>
+          <div class="placeholder" style="height: 420px; margin-top: 18px; border-radius: 22px;">
+            Сюда можно положить блок с клиентами / логотипами / карточками кейсов из текущей главной
+            <br /><br />
+            Идея: не просто «нам доверяют», а «вот проекты, похожие на вас»
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="launch">
+      <div class="container">
+        <div class="eyebrow">Очень сильный блок из текущей главной</div>
+        <h2 class="h2">Запуск остаётся простым и понятным</h2>
+        <div class="lead">Его стоит оставить, но чуть поднять выше и сделать частью обещания: не просто платформа, а платформа с понятным входом.</div>
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="h3">Демо</h3>
+            <div class="muted">Показываете релевантный сценарий под сегмент клиента: детский, взрослый или корпоративный.</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="h3">План запуска</h3>
+            <div class="muted">Фиксируете, что нужно перенести, настроить и запустить в первую очередь.</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="h3">Настройка</h3>
+            <div class="muted">Команда помогает собрать школу на платформе и подготовить запуск без лишней ручной работы.</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3 class="h3">Старт</h3>
+            <div class="muted">Вы начинаете работать в системе, а не осваивать десяток разрозненных сервисов.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-lg" id="app">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Финальное усиление доверия</div>
+          <h2 class="h2">Мобильное приложение остаётся важной частью обещания</h2>
+          <div class="lead">Его стоит показывать не как отдельную фичу вверху страницы, а как подтверждение зрелости платформы: ученикам удобно учиться, а школе — удерживать процесс в одном контуре.</div>
+          <div class="testimonials" style="margin-top: 24px;">
+            <div class="quote">
+              <small>Что можно показать рядом</small>
+              <p>Занятия, домашние задания, журнал, уведомления, календарь, прохождение уроков и тестов с телефона.</p>
+            </div>
+            <div class="quote">
+              <small>Смысл блока</small>
+              <p>Не «у нас есть приложение», а «ученикам удобно возвращаться в обучение и оставаться внутри вашей экосистемы».</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-app">
+          <div class="screen desktop">
+            <div class="screen-header"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="placeholder">Сюда положить скрин десктопа: журнал / программа / аналитика</div>
+            </div>
+          </div>
+          <div class="screen mobile">
+            <div class="screen-header"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="placeholder">Сюда положить мобильный кабинет ученика</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-lg" id="cta">
+      <div class="container">
+        <div class="cta-box" style="padding: 34px; text-align: center;">
+          <div class="eyebrow">Финальный экран</div>
+          <h2 class="h2" style="margin-top: 16px;">Попробуйте SOHO.LMS бесплатно</h2>
+          <div class="lead" style="margin: 0 auto 24px;">На уровне контента здесь уже можно подставлять один из трёх сценариев после выбора сегмента: для школ, для экспертов или для компаний.</div>
+          <div class="hero-cta" style="justify-content: center; margin-bottom: 0;">
+            <a class="btn btn-primary" href="#">Попробовать бесплатно</a>
+            <a class="btn btn-secondary" href="#">Записаться на демо</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-line">
+      <div>Черновой мокап новой главной SOHO.LMS</div>
+      <div>Логика: сегменты → польза → продукт → доверие → запуск</div>
+    </div>
+  </footer>
+</body>
+</html>
