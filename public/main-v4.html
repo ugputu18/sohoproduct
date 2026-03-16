@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SOHO.LMS — платформа управления обучением</title>
+<style>
+:root{
+--bg:#f6f7f5;
+--surface:#ffffff;
+--text:#121212;
+--muted:#6b746e;
+--line:#dfe6e1;
+--brand:#7ec293;
+--accent:#eef7f1;
+--container:1220px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.container{max-width:var(--container);margin:auto;padding:0 24px}
+.section{padding:90px 0}
+.section-lg{padding:120px 0}
+
+h1{font-size:64px;margin:0 0 18px;line-height:1.05}
+h2{font-size:40px;margin:0 0 16px}
+h3{margin:0 0 10px}
+p{color:var(--muted)}
+.lead{font-size:20px}
+
+.topbar{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:10}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{font-weight:800;font-size:20px}
+.nav{display:flex;gap:24px;color:var(--muted)}
+.actions{display:flex;gap:10px}
+
+.btn{padding:12px 18px;border-radius:10px;border:1px solid transparent;font-weight:600;cursor:pointer}
+.btn-primary{background:var(--brand);color:white}
+.btn-secondary{background:white;border:1px solid var(--line)}
+.btn-ghost{background:transparent;color:var(--muted)}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0}
+.point{background:white;border:1px solid var(--line);padding:12px;border-radius:10px}
+.hero-proof{margin-top:24px;display:flex;gap:20px;font-size:14px;color:var(--muted)}
+
+.product-stage{background:white;border:1px solid var(--line);border-radius:20px;padding:40px;text-align:center}
+.placeholder{border:2px dashed var(--line);padding:70px;border-radius:12px;color:var(--muted)}
+
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.stack-item{border:1px solid var(--line);padding:12px;border-radius:10px;margin-bottom:8px;background:#fafafa}
+.system{background:var(--accent);padding:30px;border-radius:14px;border:1px solid #dbeee2}
+
+.slider{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.slider-head{padding:30px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.tab{padding:10px 14px;border-radius:20px;border:1px solid var(--line);background:#f6f7f6;font-size:14px}
+.tab.active{background:var(--accent);border-color:#cfe7d7}
+.slide{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:30px}
+
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}
+.step{background:white;border:1px solid var(--line);padding:16px;border-radius:10px}
+
+.use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid var(--line);border-radius:14px;padding:22px}
+
+.case-story{background:white;border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:20px}
+.case-meta{display:flex;gap:16px;margin-top:12px;font-size:14px;color:var(--muted)}
+
+.maturity{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+.logos{display:flex;gap:40px;opacity:.6;margin-top:20px}
+
+.cta-box{text-align:center}
+
+footer{padding:40px 0;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="container topbar-inner">
+<div class="logo">SOHO.LMS</div>
+<div class="nav">
+<div>Возможности</div>
+<div>Решения</div>
+<div>Кейсы</div>
+<div>Цены</div>
+</div>
+<div class="actions">
+<button class="btn btn-ghost">Войти</button>
+<button class="btn btn-secondary">Попробовать</button>
+<button class="btn btn-primary">Демо</button>
+</div>
+</div>
+</div>
+
+<main>
+
+<section class="section-lg">
+<div class="container hero">
+
+<div>
+
+<h1>Операционная система для образовательных школ</h1>
+
+<p class="lead">
+SOHO.LMS объединяет учеников, занятия, преподавателей, задания,
+расписание и продажи обучения в одной системе управления школой.
+</p>
+
+<p class="lead" style="margin-top:10px">
+Когда школа растёт, обучение начинает жить в Zoom, Telegram и таблицах.
+SOHO.LMS превращает обучение в управляемую систему.
+</p>
+
+<div class="hero-points">
+
+<div class="point">ученики, группы и расписание</div>
+<div class="point">курсы и программы обучения</div>
+<div class="point">домашние задания и тесты</div>
+<div class="point">оплаты и запуск обучения</div>
+
+</div>
+
+<div style="display:flex;gap:10px;margin-top:20px">
+
+<button class="btn btn-primary">Посмотреть демо</button>
+<button class="btn btn-secondary">Попробовать платформу</button>
+
+</div>
+
+<div class="hero-proof">
+
+<div>120+ школ</div>
+<div>15 000 учеников</div>
+<div>50 000 уроков в месяц</div>
+
+</div>
+
+</div>
+
+<div class="product-stage">
+<div class="placeholder">
+
+Zoom / Telegram / Docs / Excel  
+↓  
+SOHO.LMS  
+
+Ученики · Занятия · Задания · Прогресс · Оплаты
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container before-after">
+
+<div>
+
+<h2>Как школы работают без платформы</h2>
+
+<div class="stack-item">Zoom — занятия</div>
+<div class="stack-item">Telegram — общение с учениками</div>
+<div class="stack-item">Google Docs — материалы</div>
+<div class="stack-item">Excel — ученики и расписание</div>
+
+<p style="margin-top:14px">
+Когда школа растёт, процессы распадаются на десятки инструментов.
+</p>
+
+<ul>
+<li>ученики путаются в ссылках</li>
+<li>администратор тратит часы на ручную работу</li>
+<li>преподаватели работают по-разному</li>
+<li>руководитель не видит полной картины обучения</li>
+</ul>
+
+</div>
+
+<div class="system">
+
+<h2>Единая система управления школой</h2>
+
+<ul>
+<li>ученики и группы</li>
+<li>курсы и программы</li>
+<li>расписание занятий</li>
+<li>домашние задания</li>
+<li>контроль прогресса</li>
+<li>оплаты и доступ к обучению</li>
+</ul>
+
+<p>
+Все процессы обучения связаны в одной системе.
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section class="section-lg">
+<div class="container slider">
+
+<div class="slider-head">
+<h2>Как работает платформа</h2>
+<p class="lead">Ключевые сценарии работы школы внутри SOHO.LMS.</p>
+
+<div class="tabs">
+<div class="tab active">Обучение</div>
+<div class="tab">Занятия</div>
+<div class="tab">Задания</div>
+<div class="tab">Ученики</div>
+<div class="tab">Продажи</div>
+</div>
+</div>
+
+<div class="slide">
+<div>
+<h3>Управляйте обучением</h3>
+<p>Создавайте курсы, программы и группы. Стройте структуру обучения и управляйте расписанием занятий.</p>
+<ul>
+<li>курсы и модули</li>
+<li>программы обучения</li>
+<li>группы и расписание</li>
+<li>доступ к материалам</li>
+</ul>
+</div>
+
+<div class="placeholder">скрин интерфейса продукта</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>Как проходит обучение</h2>
+
+<div class="steps">
+<div class="step">1. ученик записывается на курс</div>
+<div class="step">2. получает доступ</div>
+<div class="step">3. посещает занятия</div>
+<div class="step">4. выполняет задания</div>
+<div class="step">5. школа видит прогресс</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+
+<h2>Кейс школы подготовки к экзаменам</h2>
+
+<div class="case-story">
+
+<p>
+После перехода на SOHO.LMS школа перевела задания,
+расписание и коммуникацию с учениками в одну систему.
+</p>
+
+<p>
+Администратор перестал вести таблицы вручную,
+а преподаватели начали отслеживать прогресс учеников
+прямо в платформе.
+</p>
+
+<div class="case-meta">
+
+<div>120 учеников</div>
+<div>8 преподавателей</div>
+<div>экономия ~15 часов администрирования в неделю</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>На каком этапе ваша школа</h2>
+
+<div class="maturity">
+
+<div class="card"><h3>Начало</h3><p>несколько учеников</p></div>
+<div class="card"><h3>Рост</h3><p>появляются группы</p></div>
+<div class="card"><h3>Система</h3><p>нужна платформа</p></div>
+<div class="card"><h3>Масштаб</h3><p>школа растёт</p></div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>Нам доверяют образовательные проекты</h2>
+<p class="lead">Платформа используется школами разных форматов.</p>
+
+<div class="logos">
+<div>логотип школы</div>
+<div>логотип школы</div>
+<div>логотип школы</div>
+<div>логотип школы</div>
+</div>
+</div>
+</section>
+
+<section class="section-lg">
+<div class="container cta-box">
+<h2>Попробуйте SOHO.LMS</h2>
+<p class="lead">Начните управлять обучением в одной системе.</p>
+
+<div style="margin-top:20px">
+<button class="btn btn-primary">Попробовать бесплатно</button>
+<button class="btn btn-secondary">Получить демо</button>
+</div>
+</div>
+</section>
+
+
+
+<section class="section">
+<div class="container">
+
+<h2>Когда школе нужна платформа</h2>
+
+<p class="lead">
+Большинство образовательных проектов проходят одинаковые этапы роста.
+</p>
+
+<div class="maturity">
+
+<div class="card">
+
+<h3>10–30 учеников</h3>
+<p>Управление через чаты и таблицы ещё работает.</p>
+
+</div>
+
+<div class="card">
+
+<h3>30–80 учеников</h3>
+<p>Появляются группы, несколько преподавателей и домашние задания.</p>
+
+</div>
+
+<div class="card">
+
+<h3>80–200 учеников</h3>
+<p>Администратор тратит десятки часов на расписание и коммуникацию.</p>
+
+</div>
+
+<div class="card">
+
+<h3>200+ учеников</h3>
+<p>Без системы школа перестаёт масштабироваться.</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+
+<h2>Что даёт платформа школе</h2>
+
+<div class="use-cases">
+
+<div class="card">
+
+<h3>Меньше ручной работы</h3>
+
+<p>
+Автоматическая выдача доступов,
+управление расписанием и контроль заданий.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Прозрачность обучения</h3>
+
+<p>
+Школа видит прогресс учеников,
+выполнение заданий и посещаемость.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Рост школы</h3>
+
+<p>
+Когда процессы работают автоматически,
+школа может масштабировать обучение.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section-lg">
+<div class="container cta-box">
+
+<h2>Посмотрите, как работает SOHO.LMS</h2>
+
+<p class="lead">
+Платформа помогает школам управлять обучением,
+учениками и преподавателями в одной системе.
+</p>
+
+<div style="margin-top:20px">
+
+<button class="btn btn-primary">Получить демо</button>
+<button class="btn btn-secondary">Попробовать платформу</button>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">SOHO.LMS</div>
+</footer>
+
+</body>
+</html>
